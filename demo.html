@@ -8,9 +8,9 @@
 		body { padding: 10px 20px 20px 40px; }
 		body { font-family: Helvetica, Arial, sans-serif; }
 
-		h1 { font-size: 1.25; }
+		h1 { font-size: 1.25em; }
 		h1 small { font-size: 0.688em; font-weight: 400; }
-		h2 { font-size: 1; margin-bottom: 0.2em; }
+		h2 { font-size: 1em; margin-top: 1.5em; margin-bottom: -.5em; }
 		h2 small { font-size: 0.688em; }
 
 		p { margin-bottom: 0.8em; font-size: 0.813em; }
@@ -24,25 +24,62 @@
 	<!-- /Jquery -->
 	<!-- Fotorama -->
 	<script type="text/javascript" src="jquery.fotorama.js"></script>
-	<link rel="stylesheet" type="text/css" href="jquery.fotorama-0.1.css" />
+	<link rel="stylesheet" type="text/css" href="jquery.fotorama.css" />
 	<!-- /Fotorama -->
 </head>
 <body>
 
 <h1>Fotorama
-	<small>0.1</small></h1>
+	<small>0.2</small></h1>
 
-<h2>Default</h2>
+<h2>1. Include latest version of jQuery and Fotorama on your web page</h2>
+
 <p><code>
-$("#fotorama").fotorama();
+&lt;head&gt;<br/>
+&nbsp;&nbsp;&lt;script type="text/javascript" src="jquery-1.6.1.min.js"&gt;&lt;/script&gt;<br/><br/>
+&nbsp;&nbsp;&lt;script type="text/javascript" src="jquery.fotorama-0.2.js"&gt;&lt;/script&gt;<br/>
+&nbsp;&nbsp;&lt;link rel="stylesheet" type="text/css" href="jquery.fotorama-0.2.css"/&gt;<br/>
+&lt;/head&gt;
+</code></p>
+
+<h2>2. Add images</h2>
+<p><code>
+&lt;body&gt;<br/>
+&nbsp;&nbsp;&lt;div class="fotorama"&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="img/1.jpg"/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="img/2.jpg"/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="img/3.jpg"/&gt;<br/>
+&nbsp;&nbsp;&lt;/div&gt;<br/>
+&lt;/body&gt;
+</code></p>
+
+<h2>3. Activate Fotorama</h2>
+<p><code>
+$(".fotorama").fotorama();
 </code></p>
 
 <script type="text/javascript">
 	$(function() {
-		$("#fotorama").fotorama();
+		$(".fotorama").fotorama();
 	});
 </script>
-<div id="fotorama">
+<div class="fotorama">
+	<img src="img/60.jpg" alt="Снег" />
+	<img src="img/61.jpg" alt="Ковбой" />
+	<img src="img/62.jpg" alt="На глиссаде" />
+	<img src="img/64.jpg" alt="Кран" />
+	<img src="img/65.jpg" alt="Стена" />
+	<img src="img/66.jpg" alt="Университет" />
+	<img src="img/67.jpg" alt="Электричество" />
+	<img src="img/68.jpg" alt="Тротуар" />
+	<img src="img/70.jpg" alt="В парке" />
+	<img src="img/71.jpg" alt="Плавец" />
+</div>
+
+<p><br/></p>
+<p>No settings for cropping, easing, autoplay, preload, carousel follow and other noise! No problem with multiply galleries, any desired aspect ratio and size.</p>
+
+<div class="fotorama">
 	<img src="img/1.jpg" width="1000" height="750">
 	<img src="img/2.jpg" width="1000" height="625">
 	<img src="img/3.jpg" width="1000" height="625">
@@ -51,21 +88,21 @@ $("#fotorama").fotorama();
 </div>
 <p><br/></p>
 
-<h2>Options available</h2>
+<h2>But some weird options available :-)</h2>
 <p><code>
 $("#fotorama-bw").fotorama({<br/>
-&nbsp;&nbsp;<strong>transitionDuration:</strong> 500, <span class="gray">// number, default: 250</span><br/>
-&nbsp;&nbsp;<strong>slideShow:</strong> true, <span class="gray">// boolean, default: false</span><br/>
-&nbsp;&nbsp;<strong>slideShowDelay:</strong> 5000, <span class="gray">// number, default: 3000</span><br/>
+&nbsp;&nbsp;<strong>transitionDuration:</strong> 0, <span class="gray">// number, default: 250</span><br/>
+&nbsp;&nbsp;<strong>thumbsHorizontal:</strong> true, <span class="gray">// boolean, default: false</span><br/>
+&nbsp;&nbsp;<strong>thumbsWithRatio:</strong> true, <span class="gray">// boolean, default: false</span><br/>
 &nbsp;&nbsp;<strong>caption:</strong> $("#fotorama-bw-caption") <span class="gray">// jQuery, default: false</span><br/>
 });
 </code></p>
 <script type="text/javascript">
 	$(function() {
 		$("#fotorama-bw").fotorama({
-			transitionDuration: 500, // number, default: 250
-			slideShow: true, // boolean, default: false
-			slideShowDelay: 5000, // number, default: 3000
+			transitionDuration: 0, // number, default: 250
+			thumbsHorizontal: true, // boolean, default: false
+			thumbsWithRatio: true, // boolean, default: false
 			caption: $("#fotorama-bw-caption") // jQuery, default: false
 		});
 	});
@@ -82,7 +119,7 @@ $("#fotorama-bw").fotorama({<br/>
 <p id="fotorama-bw-caption" style="max-width: 30em;"></p>
 <p><br/></p>
 
-<p>Ещё: <a href="http://artpolikarpov.ru/2011/06/23/1/">Фоторама 0.1</a>, заметка на моём блоге</p>
+<p><a href="http://artpolikarpov.ru/tags/fotorama/">Заметки с тегом «фоторама»</a> на моём блоге</p>
 
 <p><br/></p>
 <p><br/></p>
