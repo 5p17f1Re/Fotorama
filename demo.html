@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+		"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Fotorama demo</title>
+	<style type="text/css">
+		body { padding: 10px 20px 20px 40px; }
+		body { font-family: Helvetica, Arial, sans-serif; }
+
+		h1 { font-size: 1.25; }
+		h1 small { font-size: 0.688em; font-weight: 400; }
+		h2 { font-size: 1; margin-bottom: 0.2em; }
+		h2 small { font-size: 0.688em; }
+
+		p { margin-bottom: 0.8em; font-size: 0.813em; }
+
+		code { padding: .4em; background: #fffcde; display: inline; *zoom: 1; display: inline-block; }
+		.gray { color: #999; }
+	</style>
+
+	<!-- Jquery -->
+	<script type="text/javascript" src="jquery-1.6.1.min.js"></script>
+	<!-- /Jquery -->
+	<!-- Fotorama -->
+	<script type="text/javascript" src="jquery.fotorama.js"></script>
+	<link rel="stylesheet" type="text/css" href="jquery.fotorama-0.1.css" />
+	<!-- /Fotorama -->
+</head>
+<body>
+
+<h1>Fotorama
+	<small>0.1</small></h1>
+
+<h2>Default</h2>
+<p><code>
+$("#fotorama").fotorama();
+</code></p>
+
+<script type="text/javascript">
+	$(function() {
+		$("#fotorama").fotorama();
+	});
+</script>
+<div id="fotorama">
+	<img src="img/1.jpg" width="1000" height="750">
+	<img src="img/2.jpg" width="1000" height="625">
+	<img src="img/3.jpg" width="1000" height="625">
+	<img src="img/4.jpg" width="700" height="1000">
+	<img src="img/5.jpg" width="1000" height="750">
+</div>
+<p><br/></p>
+
+<h2>Options available</h2>
+<p><code>
+$("#fotorama-bw").fotorama({<br/>
+&nbsp;&nbsp;<strong>transitionDuration:</strong> 500, <span class="gray">// number, default: 250</span><br/>
+&nbsp;&nbsp;<strong>slideShow:</strong> true, <span class="gray">// boolean, default: false</span><br/>
+&nbsp;&nbsp;<strong>slideShowDelay:</strong> 5000, <span class="gray">// number, default: 3000</span><br/>
+&nbsp;&nbsp;<strong>caption:</strong> $("#fotorama-bw-caption") <span class="gray">// jQuery, default: false</span><br/>
+});
+</code></p>
+<script type="text/javascript">
+	$(function() {
+		$("#fotorama-bw").fotorama({
+			transitionDuration: 500, // number, default: 250
+			slideShow: true, // boolean, default: false
+			slideShowDelay: 5000, // number, default: 3000
+			caption: $("#fotorama-bw-caption") // jQuery, default: false
+		});
+	});
+</script>
+<div id="fotorama-bw">
+	<img src="img/6.jpg" width="667" height="500" alt="Изучает азы игр на голофоне">
+	<img src="img/7.jpg" width="889" height="500" alt="В животе у Бендера всегда есть место для всякого хлама, бутылки спиртного, денег, нужной, в данный момент, кнопки и регулятора">
+	<img src="img/8.jpg" width="625" height="500" alt="Теперь он может не только сгибать, но и разгибать «что захочет и кого захочет»">
+	<img src="img/9.jpg" width="379" height="500" alt="Как правило, профессор появляется перед очередной доставкой груза со словами «Хорошие новости!»">
+	<img src="img/10.jpg" width="447" height="500" alt="Межпланетный экспресс» — это маленький бизнес профессора, окупающий его гениальные, но иногда весьма сомнительные исследования и изобретения">
+	<img src="img/11.jpg" width="889" height="500" alt="Неуязвим для мозговой атаки из-за отличий от остальных людей в диапазоне работы мозговых волн">
+	<img src="img/12.jpg" width="502" height="500" alt=" Воспитанная без родителей в приюте, большую часть серий она верит, что она — инопланетянка">
+</div>
+<p id="fotorama-bw-caption" style="max-width: 30em;"></p>
+<p><br/></p>
+
+<p>Ещё: <a href="http://artpolikarpov.ru/2011/06/23/1/">Фоторама 0.1</a>, заметка на моём блоге</p>
+
+<p><br/></p>
+<p><br/></p>
+
+<p>@ <a href="http://artpolikarpov.ru">Artem Polikarpov</a>, artpolikarpov@gmail.com</p>
+</body>
+</html>
