@@ -8,7 +8,6 @@
 		var options = $.extend({
 			transitionDuration: 250,
 			thumbsHorizontal: false,
-			thumbsWithRatio: false,
 			caption: false
 		}, options);
 
@@ -52,14 +51,6 @@
 					if (options.thumbsHorizontal) {
 						// Если тумбсы надо поставить горизонтально в линию
 						_thumb.css({float: "left", display: "inline"});
-					}
-					if (options.thumbsWithRatio) {
-						// Если тумбсы должны копировать соотношение сторон своей картинки
-						var ratio = $(this).width()/$(this).height();
-						var thumbH = 16;
-						var thumbW = thumbH*ratio;
-						_thumb.css({width: thumbW, height: thumbH});
-
 					}
 					if (i == 0) {
 						// Показываем первую картинку, когда она загружена

@@ -14,9 +14,9 @@
 
 .fotorama__thumb {
   display: block;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=99)";
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=99);
-  opacity: 0.99;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=44)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=44);
+  opacity: 0.44;
   margin: 2px;
   cursor: pointer;
   -moz-transition-property: all;
@@ -27,25 +27,30 @@
   -webkit-transition-duration: 0.15s;
   -o-transition-duration: 0.15s;
   transition-duration: 0.15s;
-  width: 16px;
-  height: 16px;
-  -moz-transform: scale(0.75);
-  -webkit-transform: scale(0.75);
-  -o-transform: scale(0.75);
-  -ms-transform: scale(0.75);
-  transform: scale(0.75);
-  background: rgba(127, 127, 127, 0.25);
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -o-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -khtml-border-radius: 3px;
-  border-radius: 3px;
+  width: 10px;
+  height: 10px;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dddddd), color-stop(100%, #bbbbbb));
+  background: -webkit-linear-gradient(#dddddd, #bbbbbb);
+  background: -moz-linear-gradient(#dddddd, #bbbbbb);
+  background: -o-linear-gradient(#dddddd, #bbbbbb);
+  background: linear-gradient(#dddddd, #bbbbbb);
+  background-color: #cccccc;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
   -moz-box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.75);
   -o-box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.75);
   box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.75);
-  border: 1px dashed white;
+  border: 1px solid white;
+}
+.fotorama__thumb:hover {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=66)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=66);
+  opacity: 0.66;
 }
 
 .fotorama__thumb_disabled {
@@ -64,16 +69,26 @@
   background: -o-linear-gradient(#ffffff, #e9e8e7);
   background: linear-gradient(#ffffff, #e9e8e7);
   background-color: #f4f3f3;
-  border: 1px solid white;
   cursor: default;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=88)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=88);
+  opacity: 0.88;
 }
 
 .fotorama__wrap:hover .fotorama__thumb, .fotorama__wrap_no-hover .fotorama__thumb {
-  -moz-transform: scale(1);
-  -webkit-transform: scale(1);
-  -o-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=55)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=55);
+  opacity: 0.55;
+}
+.fotorama__wrap:hover .fotorama__thumb:hover, .fotorama__wrap_no-hover .fotorama__thumb:hover {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=77)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=77);
+  opacity: 0.77;
+}
+.fotorama__wrap:hover .fotorama__thumb_selected, .fotorama__wrap_no-hover .fotorama__thumb_selected {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=99)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=99);
+  opacity: 0.99;
 }
 
 .fotorama__img {

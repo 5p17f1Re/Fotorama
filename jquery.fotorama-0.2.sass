@@ -13,17 +13,19 @@
 	margin: 2px
 .fotorama__thumb
 	display: block
-	+opacity(.99)
+	+opacity(.44)
 	margin: 2px
 	cursor: pointer
 	+transition(all, .15s)
-	width: 16px
-	height: 16px
-	+transform(scale(.75))
-	background: rgba(127,127,127,.25)
-	+border-radius(3px)
+	width: 10px
+	height: 10px
+	+background(linear-gradient(#ddd,#bbb))
+	background-color: mix(#ddd,#bbb)
+	+border-radius(10px)
 	+box-shadow(rgba(0,0,0,.75),1px,1px,0)
-	border: 1px dashed #fff
+	border: 1px solid #fff
+	&:hover
+		+opacity(.66)
 .fotorama__thumb_disabled
 	visibility: hidden
 	cursor: default
@@ -31,12 +33,15 @@
 	+box-shadow(rgba(0,0,0,.75),1px,1px,3px,0,inset)
 	+background(linear-gradient(#fff,#e9e8e7))
 	background-color: mix(#fff,#e9e8e7)
-	border: 1px solid #fff
 	cursor: default
-
+	+opacity(.88)
 .fotorama__wrap:hover, .fotorama__wrap_no-hover
 	.fotorama__thumb
-		+transform(scale(1))
+		+opacity(.55)
+		&:hover
+			+opacity(.77)
+	.fotorama__thumb_selected
+		+opacity(.99)
 
 .fotorama__img
 	position: absolute
