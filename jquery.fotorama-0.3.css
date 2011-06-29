@@ -1,24 +1,32 @@
 /* Made with sass. */
-/* Please do not edit css-file dierctly, your changes will be erased. */
+/* Please do not edit css-file directly, your changes will be erased. */
 .fotorama__wrap {
   position: relative;
   overflow: hidden;
   *zoom: 1;
+  cursor: pointer;
 }
 
 .fotorama__thumbs {
   overflow: hidden;
   *zoom: 1;
-  margin: 2px;
+  position: absolute;
+  width: 100%;
+  font-size: 0;
+  line-height: 0;
 }
 
 .fotorama__thumb {
-  display: block;
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=44)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=44);
   opacity: 0.44;
-  margin: 2px;
   cursor: pointer;
+  position: relative;
   -moz-transition-property: all;
   -webkit-transition-property: all;
   -o-transition-property: all;
@@ -46,6 +54,9 @@
   -o-box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.75);
   box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.75);
   border: 1px solid white;
+}
+.fotorama__thumb {
+  *display: inline;
 }
 .fotorama__thumb:hover {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=66)";
@@ -93,5 +104,4 @@
 
 .fotorama__img {
   position: absolute;
-  cursor: pointer;
 }

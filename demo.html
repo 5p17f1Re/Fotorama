@@ -10,10 +10,14 @@
 
 		h1 { font-size: 1.25em; }
 		h1 small { font-size: 0.688em; font-weight: 400; }
-		h2 { font-size: 1em; margin-top: 1.5em; margin-bottom: -.5em; }
+		h2 { font-size: 1em; margin-top: 1.5em; margin-bottom: -.4em; }
 		h2 small { font-size: 0.688em; }
 
-		p { margin-bottom: 0.8em; font-size: 0.813em; }
+		p, table { margin: 0.8em 0; font-size: 0.813em; }
+
+		table { border-collapse: collapse; }
+		table td { padding-right: 20px; }
+		table p { font-size: 1em; }
 
 		code { padding: .4em; background: #fffcde; display: inline; *zoom: 1; display: inline-block; }
 		.gray { color: #999; }
@@ -23,14 +27,14 @@
 	<script type="text/javascript" src="jquery-1.6.1.min.js"></script>
 	<!-- /Jquery -->
 	<!-- Fotorama -->
-	<script type="text/javascript" src="jquery.fotorama-0.2.js"></script>
-	<link rel="stylesheet" type="text/css" href="jquery.fotorama-0.2.css" />
+	<script type="text/javascript" src="jquery.fotorama-0.3.js"></script>
+	<link rel="stylesheet" type="text/css" href="jquery.fotorama-0.3.css" />
 	<!-- /Fotorama -->
 
-		<!-- Comment if demo -->
-	<script type="text/javascript">
+	<!-- Comment if demo -->
+	<!--<script type="text/javascript">
 
-	  /*var _gaq = _gaq || [];
+	  var _gaq = _gaq || [];
 	  _gaq.push(['_setAccount', 'UA-21114316-2']);
 	  _gaq.push(['_trackPageview']);
 
@@ -38,21 +42,21 @@
 		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();*/
+	  })();
 
-	</script>
+	</script>-->
 	<!-- /Comment if demo -->
 </head>
 <body>
 
 <h1>Fotorama
-	<small>0.2</small></h1>
+	<small>0.3</small></h1>
 
 <h2>1. Include latest version of jQuery and Fotorama on your web page</h2>
 
 <p><code>
 &lt;head&gt;<br/>
-&nbsp;&nbsp;&lt;script type="text/javascript" src="jquery-1.6.1.min.js"&gt;&lt;/script&gt;<br/><br/>
+&nbsp;&nbsp;&lt;script type="text/javascript" src="jquery-1.6.1.min.js"&gt;&lt;/script&gt;<br/>
 &nbsp;&nbsp;&lt;script type="text/javascript" src="jquery.fotorama-0.2.js"&gt;&lt;/script&gt;<br/>
 &nbsp;&nbsp;&lt;link rel="stylesheet" type="text/css" href="jquery.fotorama-0.2.css"/&gt;<br/>
 &lt;/head&gt;
@@ -71,7 +75,11 @@
 
 <h2>3. Activate Fotorama</h2>
 <p><code>
-$(".fotorama").fotorama();
+&lt;script type="text/javascript"&gt;<br/>
+&nbsp;&nbsp;$(function() {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;$(".fotorama").fotorama();<br/>
+&nbsp;&nbsp;});<br/>
+&lt;/script&gt
 </code></p>
 
 <script type="text/javascript">
@@ -104,45 +112,182 @@ $(".fotorama").fotorama();
 </div>
 <p><br/></p>
 
-<h2>But some weird options available :-)</h2>
+<h2>Position thumbs as you like</h2>
+<table>
+	<tr valign="bottom">
+		<td>
+			<p><code>
+				$("#fotorama-сt").fotorama({<br/>
+				&nbsp;&nbsp;<strong>thumbsPosition:</strong> "center top"<br/>
+				&nbsp;&nbsp;<span class="gray">// string, default "left top"</span><br/>
+				});
+			</code></p>
+		</td>
+		<td>
+			<p><code>
+				$("#fotorama-rcv").fotorama({<br/>
+				&nbsp;&nbsp;<strong>thumbsPosition:</strong> "right center",<br/>
+				&nbsp;&nbsp;<strong>thumbsVertical:</strong> true<br/>
+				&nbsp;&nbsp;<span class="gray">// boolean, default: false</span><br/>
+				});
+			</code></p>
+		</td>
+		<td>
+			<p><code>
+				$("#fotorama-cb").fotorama({<br/>
+				&nbsp;&nbsp;<strong>thumbsPosition:</strong> "center bottom"<br/>
+				});
+			</code></p>
+		</td>
+		<td>
+			<p><code>
+				$("#fotorama-lcv").fotorama({<br/>
+				&nbsp;&nbsp;<strong>thumbsPosition:</strong> "left center",<br/>
+				&nbsp;&nbsp;<strong>thumbsVertical:</strong> true<br/>
+				});
+			</code></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td>
+			<script type="text/javascript">
+				$(function() {
+					$("#fotorama-сt").fotorama({
+						thumbsPosition: "center top" // string, default "left top"
+					});
+				});
+			</script>
+			<div id="fotorama-сt">
+				<img src="img/1s.jpg" width="200" height="200">
+				<img src="img/2s.jpg" width="200" height="200">
+				<img src="img/3s.jpg" width="200" height="200">
+			</div>
+		</td>
+		<td>
+			<script type="text/javascript">
+				$(function() {
+					$("#fotorama-rcv").fotorama({
+						thumbsPosition: "right center", // string, default "left top"
+						thumbsVertical: true // boolean, default: false
+					});
+				});
+			</script>
+			<div id="fotorama-rcv">
+				<img src="img/1s.jpg" width="200" height="200">
+				<img src="img/2s.jpg" width="200" height="200">
+				<img src="img/3s.jpg" width="200" height="200">
+			</div>
+		</td>
+		<td>
+			<script type="text/javascript">
+				$(function() {
+					$("#fotorama-cb").fotorama({
+						thumbsPosition: "center bottom" // string, default "left top"
+					});
+				});
+			</script>
+			<div id="fotorama-cb">
+				<img src="img/1s.jpg" width="200" height="200">
+				<img src="img/2s.jpg" width="200" height="200">
+				<img src="img/3s.jpg" width="200" height="200">
+			</div>
+		</td>
+		<td>
+			<script type="text/javascript">
+				$(function() {
+					$("#fotorama-lcv").fotorama({
+						thumbsPosition: "left center", // string, default "left top"
+						thumbsVertical: true // boolean, default: false
+					});
+				});
+			</script>
+			<div id="fotorama-lcv">
+				<img src="img/1s.jpg" width="200" height="200">
+				<img src="img/2s.jpg" width="200" height="200">
+				<img src="img/3s.jpg" width="200" height="200">
+			</div>
+		</td>
+	</tr>
+</table>
+<p><br/></p>
+<!--<p>Even crazy.</p>
+<table>
+	<tr>
+		<td>
+			<script type="text/javascript">
+				$(function() {
+					$("#fotorama-cc").fotorama({
+						thumbsPosition: "center center" // string, default "left top"
+					});
+				});
+			</script>
+			<div id="fotorama-cc">
+				<img src="img/1s.jpg" width="200" height="200">
+				<img src="img/2s.jpg" width="200" height="200">
+				<img src="img/3s.jpg" width="200" height="200">
+			</div>
+		</td>
+		<td>
+			<script type="text/javascript">
+				$(function() {
+					$("#fotorama-ccv").fotorama({
+						thumbsPosition: "center center", // string, default "left top"
+						thumbsVertical: true // boolean, default: false
+					});
+				});
+			</script>
+			<div id="fotorama-ccv">
+				<img src="img/1s.jpg" width="200" height="200">
+				<img src="img/2s.jpg" width="200" height="200">
+				<img src="img/3s.jpg" width="200" height="200">
+			</div>
+		</td>
+	</tr>
+</table>
+<p><br/></p>-->
+
+<h2>Ajust transition duration,<br/>
+	add caption through img’s alt,<br/>
+	hide thumbs on mouseout</h2>
 <p><code>
 $("#fotorama-bw").fotorama({<br/>
-&nbsp;&nbsp;<strong>transitionDuration:</strong> 0, <span class="gray">// number, default: 250</span><br/>
-&nbsp;&nbsp;<strong>thumbsHorizontal:</strong> true, <span class="gray">// boolean, default: false</span><br/>
-&nbsp;&nbsp;<strong>thumbsWithRatio:</strong> true, <span class="gray">// boolean, default: false</span><br/>
+&nbsp;&nbsp;<strong>transitionDuration:</strong> 100, <span class="gray">// number, default: 500</span><br/>
+&nbsp;&nbsp;<strong>hideThumbs:</strong> true, <span class="gray">// boolean, default: false</span><br/>
 &nbsp;&nbsp;<strong>caption:</strong> $("#fotorama-bw-caption") <span class="gray">// jQuery, default: false</span><br/>
 });
 </code></p>
 <script type="text/javascript">
 	$(function() {
 		$("#fotorama-bw").fotorama({
-			transitionDuration: 0, // number, default: 250
-			thumbsHorizontal: true, // boolean, default: false
-			thumbsWithRatio: true, // boolean, default: false
+			transitionDuration: 100, // number, default: 500
+			hideThumbs: true, // boolean, default: false
 			caption: $("#fotorama-bw-caption") // jQuery, default: false
 		});
 	});
 </script>
 <div id="fotorama-bw">
 	<img src="img/6.jpg" width="667" height="500" alt="Изучает азы игр на голофоне">
-	<img src="img/7.jpg" width="889" height="500" alt="В животе у Бендера всегда есть место для всякого хлама, бутылки спиртного, денег, нужной, в данный момент, кнопки и регулятора">
+	<img src="img/7.jpg" width="889" height="500" alt="В животе у Бендера всегда есть место для всякого хлама">
 	<img src="img/8.jpg" width="625" height="500" alt="Теперь он может не только сгибать, но и разгибать «что захочет и кого захочет»">
 	<img src="img/9.jpg" width="379" height="500" alt="Как правило, профессор появляется перед очередной доставкой груза со словами «Хорошие новости!»">
-	<img src="img/10.jpg" width="447" height="500" alt="Межпланетный экспресс» — это маленький бизнес профессора, окупающий его гениальные, но иногда весьма сомнительные исследования и изобретения">
+	<img src="img/10.jpg" width="447" height="500" alt="Межпланетный экспресс» — это маленький бизнес профессора, окупающий его гениальные изобретения">
 	<img src="img/11.jpg" width="889" height="500" alt="Неуязвим для мозговой атаки из-за отличий от остальных людей в диапазоне работы мозговых волн">
 	<img src="img/12.jpg" width="502" height="500" alt=" Воспитанная без родителей в приюте, большую часть серий она верит, что она — инопланетянка">
 </div>
-<p id="fotorama-bw-caption" style="max-width: 30em;"></p>
+<p id="fotorama-bw-caption" style="max-width: 50em;"></p>
 <p><br/></p>
 
-<p><a href="http://artpolikarpov.ru/tags/fotorama/">Заметки с тегом «фоторама»</a> на моём блоге</p>
 <!-- Comment if demo -->
-<!--<h2 style="background: #555; color: #fff;  text-shadow: #000 -1px -1px 0; padding: 1em; text-align: center;"><a href="fotorama-0.1.zip" style="color: #fff;">Download Fotorama 0.1</a><br/>
-	<small>plugin and demo to get started</small></h2>-->
+<!--<h2 style="background: #555; color: #fff;  text-shadow: #000 -1px -1px 0; padding: 1em; text-align: center;"><a href="fotorama-0.3.zip" style="color: #fff;">Download Fotorama 0.3</a><br/>
+	<small>plugin and demo to get started</small><br/>
+	~
+	<br/>
+	<a href="https://github.com/artpolikarpov/Fotorama"  style="color: #fff;">Fotorama on GitHub</a></h2>-->
 <!-- /Comment if demo -->
 <p><br/></p>
 <p><br/></p>
 
-<p>@ <a href="http://artpolikarpov.ru">Artem Polikarpov</a>, artpolikarpov@gmail.com</p>
+<p>© <a href="http://artpolikarpov.ru">Artem Polikarpov</a>, 2011<br/>
+	artpolikarpov@gmail.com</p>
 </body>
 </html>

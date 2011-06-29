@@ -1,21 +1,25 @@
 @import "compass"
 
 /* Made with sass. */
-/* Please do not edit css-file dierctly, your changes will be erased. */
+/* Please do not edit css-file directly, your changes will be erased. */
 
 .fotorama__wrap
 	position: relative
 	overflow: hidden
 	*zoom: 1
+	cursor: pointer
 
 .fotorama__thumbs
 	+clearfix
-	margin: 2px
+	position: absolute
+	width: 100%
+	font-size: 0
+	line-height: 0
 .fotorama__thumb
-	display: block
+	+inline-block
 	+opacity(.44)
-	margin: 2px
 	cursor: pointer
+	position: relative
 	+transition(all, .15s)
 	width: 10px
 	height: 10px
@@ -45,4 +49,3 @@
 
 .fotorama__img
 	position: absolute
-	cursor: pointer

@@ -6,8 +6,11 @@
 (function($){
 	$.fn.fotorama = function(options) {
 		var options = $.extend({
-			transitionDuration: 250,
-			thumbsHorizontal: false,
+			transitionDuration: 500,
+			thumbsVertical: false,
+			thumbsPosition: "left top",
+			thumbsMargin: 2,
+			hideThumbs: false,
 			caption: false
 		}, options);
 
@@ -19,7 +22,7 @@
 			fotorama.wrapInner("<div class='fotorama__wrap'></div>");
 			var wrap = $(".fotorama__wrap", fotorama);
 
-			if (TOUCH || options.slideShow) {
+			if (TOUCH) {
 				wrap.addClass("fotorama__wrap_no-hover");
 			}
 
@@ -30,27 +33,48 @@
 
 			// Контейнер для тумбсов-переключалок
 			var thumbs = $("<div class='fotorama__thumbs'></div>");
+
 			thumbs.appendTo(wrap);
+
+			var thumbsXY = options.thumbsPosition.split(" ");
+
+			var thumbsX = thumbsXY[0];
+			var thumbsY = thumbsXY[1];
 
 			// Загружаем картинки, расставляем тумбсы-переключалки и активируем их
 			img.each(function(i) {
 				// Одна точка-переключалка
 				var _thumb = $("<i class='fotorama__thumb'></i>");
+				_thumb
+						.addClass("fotorama__thumb_disabled")
+						.css({margin: options.thumbsMargin})
+						.appendTo(thumbs);
 				thumb = thumb.add(_thumb);
-				_thumb.addClass("fotorama__thumb_disabled").appendTo(thumbs);
 
 				if (i != 0) {
 					// Скрываем все картинки, кроме первой
 					$(this).hide();
 				}
 
+
 				$(this).load(function(){
 					$(this).data({"loaded": true});
 					$(this).addClass("fotorama__img");
 					_thumb.removeClass("fotorama__thumb_disabled");
-					if (options.thumbsHorizontal) {
-						// Если тумбсы надо поставить горизонтально в линию
-						_thumb.css({float: "left", display: "inline"});
+					if (options.thumbsVertical) {
+						// Если тумбсы надо поставить вертикально в линию
+						_thumb.css({display: "block"});
+						switch (thumbsX) {
+							case "left":
+								_thumb.css({"marginLeft": options.thumbsMargin, "marginRight": "auto"});
+							break;
+							case "center":
+								_thumb.css({"marginLeft": "auto", "marginRight": "auto"});
+							break;
+							case "right":
+								_thumb.css({"marginLeft": "auto", "marginRight": options.thumbsMargin});
+							break;
+						}
 					}
 					if (i == 0) {
 						// Показываем первую картинку, когда она загружена
@@ -59,12 +83,31 @@
 				});
 			});
 
+			// Позиционирование переключалок
+			thumbs.css("text-align", thumbsX);
+			switch (thumbsY) {
+				case "top":
+					thumbs.css({"top": "0", "bottom": "auto"});
+				break;
+				case "bottom":
+					thumbs.css({"top": "auto", "bottom": "0"});
+				break;
+			}
+
+			function thumbsCenterY(height) {
+				// Если переключалки нужно выравнять по центру вертикально
+				if (thumbsY == "center") {
+					thumbs.css({"top": (height/2) - (thumbs.height()/2), "bottom": "auto"});
+				}
+			}
 
 			// Показываем картинки, выделяем тумбсы
 			function showImg(newImg, newDot, time) {
 				var width = newImg.width();
 				var height = newImg.height();
-				fotorama.add(wrap).animate({width: width, height: height}, time);
+				fotorama.add(wrap)
+						.animate({width: width, height: height}, time)
+						.data({"activeImg": newImg});
 				newImg.fadeIn(time).data({"active": true});
 				img.not(newImg).fadeOut(time).data({"active": false});
 				newDot.addClass("fotorama__thumb_selected");
@@ -80,17 +123,36 @@
 						options.caption.hide();
 					}
 				}
+
+				setTimeout(function(){
+					thumbsCenterY(height);
+				},10);
+
+			}
+
+			// Показывание, скрывание тумбсов по ховеру
+			if (options.hideThumbs && !TOUCH) {
+				thumbs.hide();
+				fotorama.hover(
+						function(){
+							thumbs.fadeIn(options.transitionDuration);
+						},
+						function(){
+							thumbs.fadeOut(options.transitionDuration);
+						}
+				);
 			}
 
 			// Биндим хендлеры
 			// Клик по тумбсам
-			thumb.click(function(){
+			thumb.click(function(e){
+				e.stopPropagation();
 				var i = thumb.index($(this));
 				showImg(img.eq(i), thumb.eq(i), options.transitionDuration);
 			});
 
 			// Клик по картинке
-			img.click(function(e){
+			fotorama.click(function(e){
 				if (!e.shiftKey) {
 					prevNextImg("next");
 				} else {
