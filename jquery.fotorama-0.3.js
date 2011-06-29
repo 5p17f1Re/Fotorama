@@ -126,7 +126,7 @@
 
 				setTimeout(function(){
 					thumbsCenterY(height);
-				},10);
+				},100);
 
 			}
 
